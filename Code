@@ -1,0 +1,42 @@
+int trigPin = 4;//pin numbers where you connect sensor
+int echoPin = 2;
+int lmt1 = 3;
+int lmt2 = 5;
+int rmt1 = 6;
+int rmt2 = 11;
+int c = 0;
+
+void setup(){
+  pinMode(3, OUTPUT);
+  pinMode(5, OUTPUT);
+  pinMode(6, OUTPUT);
+  pinMode(11, OUTPUT);
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+}
+
+void loop() {
+  long duration, distance;
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(1000);
+  digitalWrite(trigPin, LOW);
+  duration = pulseIn(echoPin, HIGH);
+  distance = (duration/2)/29.1;
+ 
+  delay(50);
+
+  if(distance >30){
+    digitalWrite(lmt1, LOW);
+    digitalWrite(lmt2, HIGH);
+    digitalWrite(rmt1, HIGH);
+    digitalWrite(rmt2, LOW);
+   
+  }
+  else {
+     digitalWrite(lmt1, LOW);
+    digitalWrite(lmt2, HIGH);
+    digitalWrite(rmt1, LOW);
+    digitalWrite(rmt2, HIGH);
+   
+  }
+}
